@@ -62,8 +62,8 @@ const isModerator = (req, res, next) => {
             return res.status(403).send({ message: "Require Moderator Role!" });
           }
 
-          for (let i = 0; i < roles.length; i++) {
-            if (roles[i].name === "moderator") {
+          for (const element of roles) {
+            if (element.name === "moderator") {
               next();
               return;
             }

@@ -4,7 +4,7 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 
-verifyToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
   if (!token) {
     return res.status(400).send({ message: "No token provided!" });
@@ -31,8 +31,8 @@ const isAdmin = (req, res, next) => {
             return res.status(403).send({ message: "Require Admin Role!" });
           }
 
-          for (let i = 0; i < roles.length; i++) {
-            if (roles[i].name === "admin") {
+          for (const element of roles) {
+            if (element.name === "admin") {
               next();
               return;
             }

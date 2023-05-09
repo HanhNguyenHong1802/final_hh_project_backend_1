@@ -23,7 +23,7 @@ app.use(
     httpOnly: true,
   })
 );
-const db = require("./models");
+const db = require("../models");
 
 const Role = db.role;
 
@@ -54,8 +54,8 @@ async function initial() {
     console.error("Error initializing roles:", error);
   }
 }
-require("./routes/auth.routes")(app);
-require("./routes/user.routes")(app);
+require("../routes/auth.routes")(app);
+require("../routes/user.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
